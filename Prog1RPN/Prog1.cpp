@@ -8,11 +8,17 @@ int main() {
    int num_expressions;
    cin >> num_expressions;
 
-   RPNEval myRPN = RPNEval();
-
    for (int i = 1; i <= num_expressions; i++) {
-      myRPN.ProcessExpression();
+      RPNEval myRPN = RPNEval();
       cout << "Expression " << i << ":" << endl;
+      myRPN.ProcessExpression();
+
+      if (myRPN.IsValid() == true)
+         myRPN.ProcessExpression();
+      else
+         cout << "Invalid expression" << endl;
+
+
       myRPN.PrintExpressionValue();
       myRPN.PrintIntermediateResults();
       cout << "\n\n";

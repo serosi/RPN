@@ -26,7 +26,6 @@ using namespace std;
             done = true; // done, exit while loop
          else {
             valid = false;
-            cout << "Invalid Expression BAD CHAR" << endl;
          }
 
       }
@@ -40,9 +39,6 @@ using namespace std;
          if (!stack.isEmpty()) {
             valid = false;
          }
-      }
-      if (valid == false) {
-         cout << "Invalid Expression YOU ARE HERE2222" << endl;
       }
    }
 
