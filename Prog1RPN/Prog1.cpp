@@ -14,12 +14,10 @@ int main() {
       myRPN.ProcessExpression();
 
       if (myRPN.IsValid() == true)
-         myRPN.ProcessExpression();
+         myRPN.PrintExpressionValue();
       else
          cout << "Invalid expression" << endl;
 
-
-      myRPN.PrintExpressionValue();
       myRPN.PrintIntermediateResults();
       cout << "\n\n";
    }
