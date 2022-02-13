@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+
 #include "RPNEval.h"
 #include "Stack.h"
 #include "Queue.h"
@@ -11,25 +13,42 @@ using namespace std;
    void RPNEval::ProcessExpression() {
       valid = true;
       bool done = false;
+      bool optr = false; // has ProcessOperator been called?
       char ch;
+      string expr = "";
+
 
       while (valid && !done) {
          cin >> ch;
+
          if (ch >= '0' && ch <= '9') {
             cin.putback(ch); // put ch back into input stream
+
             RPNEval::ProcessOperand();
+            expr.append(to_string(stack.Top()) + " "); // add inputted numbers to output string
+
          }
          else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
             RPNEval::ProcessOperator(ch, answer, valid);
+            optr = true;
+            expr.push_back(ch);
+            expr.append(" ");
          }
          else if (ch == '#')
             done = true; // done, exit while loop
          else {
+            expr.push_back(ch);
+            expr.append(" ");
             valid = false;
          }
 
       }
       cin.ignore(256, '\n');
+
+      if (stack.Size() == 0 && queue.isEmpty() && !optr) {
+         answer = stack.Top();
+      // if expression contains one value & no operands value will be the answer
+      }                             
 
       if (stack.isEmpty()) {
          valid = false;
@@ -40,6 +59,7 @@ using namespace std;
             valid = false;
          }
       }
+      cout << expr << endl;
    }
 
    //---------------------------------------------------------------- 
@@ -58,12 +78,14 @@ using namespace std;
    //---------------------------------------------------------------- 
    void RPNEval::ProcessOperator(char ch, float answer, bool valid) {
       float op1, op2 = 0;
+
+      if (stack.isEmpty()) {
+         valid = false;
+      }
+
+
       op2 = stack.Pop();
       op1 = stack.Pop();
-
-      if (ch == '/' && op2 == 0) {
-         valid = false; // can't divide by 0
-      }
 
       switch (ch) {
       case '+':
@@ -76,6 +98,9 @@ using namespace std;
          answer = op1 * op2;
          break;
       case '/':
+         if (op2 == 0) {
+            valid = false; // can't divide by 0
+         }
          answer = op1 / op2;
          break;
       }
@@ -102,8 +127,11 @@ using namespace std;
    // Print the value of the expression
    //---------------------------------------------------------------- 
    void RPNEval::PrintExpressionValue() {
-      if (valid) {
-         cout << "The value is: " << queue.LastElement() << "\n";
+      if (valid && !queue.isEmpty()) {
+         answer = queue.LastElement(); // if queue IS empty, there was one operand
+      }
+      else if (valid) {
+         cout << "The value is: " << answer << "\n";
       }
 
    }

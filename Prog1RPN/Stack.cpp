@@ -28,7 +28,7 @@ bool Stack::isFull() {
 //---------------------------------------------------------------- 
 // Returns the top element of the stack
 //---------------------------------------------------------------- 
-int Stack::Top() {
+float Stack::Top() {
       return stack[top];
 }
 

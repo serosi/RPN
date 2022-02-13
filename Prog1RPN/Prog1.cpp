@@ -16,7 +16,7 @@ int main() {
       if (myRPN.IsValid() == true)
          myRPN.PrintExpressionValue();
       else
-         cout << "Invalid expression" << endl;
+         cout << "Invalid Expression" << endl;
 
       myRPN.PrintIntermediateResults();
       cout << "\n\n";
