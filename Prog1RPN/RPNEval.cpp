@@ -1,11 +1,9 @@
 #include <iostream>
 #include <string>
-
 #include "RPNEval.h"
 #include "Stack.h"
 #include "Queue.h"
 using namespace std;
-
 
    //---------------------------------------------------------------- 
    // Reads and processes the next RPN expression from the input.
@@ -19,19 +17,19 @@ using namespace std;
       while (valid && !done) {
          cin >> ch;
 
-         if (ch >= '0' && ch <= '9') {
+         if (ch >= '0' && ch <= '9') { // if ch is a number
             cin.putback(ch); // put ch back into input stream
             RPNEval::ProcessOperand();
          }
          else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
             RPNEval::ProcessOperator(ch, answer, valid);
             optr = true;
-            cout << ch << " ";
+            cout << ch << " "; // cout operator
          }
          else if (ch == '#')
             done = true; // done, exit while loop
-         else {
-            cout << ch << " ";
+         else { // execute if a non-numerical/invalid character entered
+            cout << ch << " "; // cout other characters entered
             valid = false;
          }
       }
@@ -73,27 +71,27 @@ using namespace std;
 
       if (stack.isEmpty()) {
          valid = false;
-      }
+      } // will set to invalid if the stack is empty
 
       op2 = stack.Pop();
 
       if (stack.isEmpty()) {
          valid = false;
-      }
+      } // will set to invalid if the stack is empty after popping first operand
 
       op1 = stack.Pop();
 
       switch (ch) {
-      case '+':
+      case '+': // addition case
          answer = op1 + op2;
          break;
-      case '-':
+      case '-': // subtraction case
          answer = op1 - op2;
-         break;
-      case '*':
+         break; 
+      case '*': // multiplication case
          answer = op1 * op2;
          break;
-      case '/':
+      case '/': // division case
          if (op2 == 0) {
             valid = false; // can't divide by 0
          }
@@ -101,11 +99,10 @@ using namespace std;
          break;
       }
 
-      if (valid) {
+      if (valid) { // only push to stack and queue if valid, otherwise don't
          stack.Push(answer);
          queue.Enqueue(answer);
       }
-
    }
 
    //---------------------------------------------------------------- 
@@ -115,7 +112,7 @@ using namespace std;
    //---------------------------------------------------------------- 
    void RPNEval::PrintIntermediateResults() {
       cout << "The Intermediate Results are: ";
-      queue.PrintQueue();
+      queue.PrintQueue(); // Prints out intermediate result queue
       queue.MakeEmpty();
    }
 
@@ -124,10 +121,10 @@ using namespace std;
    //---------------------------------------------------------------- 
    void RPNEval::PrintExpressionValue() {
       if (valid && !queue.isEmpty()) {
-         answer = queue.LastElement(); // if queue IS empty, there was one operand
+         answer = queue.LastElement();
+         // If expression contains one value & no operands value will be the answer
       }
       if (valid) {
          cout << "The value is: " << answer << "\n";
-      }
-
+      } // Only print if valid expression
    }

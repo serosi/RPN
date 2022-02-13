@@ -28,7 +28,7 @@ public:
    // Returns the value of the RPN expression if it is valid. 
    // Returns garbage if RPN expression is not valid. 
    //---------------------------------------------------------------- 
-   OperandType Value() const { return answer; } // use this function ///////
+   OperandType Value() const { return answer; }
 
    //---------------------------------------------------------------- 
    // Print out the intermediate results to the standard 

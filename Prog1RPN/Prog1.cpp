@@ -9,18 +9,18 @@ int main() {
    cin >> num_expressions;
 
    for (int i = 1; i <= num_expressions; i++) {
-      RPNEval myRPN = RPNEval();
+      RPNEval myRPN = RPNEval(); // create new instance of RPNeval class
       cout << "Expression " << i << ":" << endl;
-      myRPN.ProcessExpression();
+      myRPN.ProcessExpression(); // process user input
 
-      if (myRPN.IsValid() == true)
+      if (myRPN.IsValid() == true) // print value only if valid
          myRPN.PrintExpressionValue();
       else
          cout << "Invalid Expression" << endl;
 
-      myRPN.PrintIntermediateResults();
+      myRPN.PrintIntermediateResults(); // print intermediate results regardless of validity
       cout << "\n\n";
    }
    
-   cout << "Normal Termination of Program 1!" << endl;
+   cout << "Normal Termination of Program 1!" << endl; // exit the program
 }
