@@ -80,8 +80,12 @@ using namespace std;
          valid = false;
       }
 
-
       op2 = stack.Pop();
+
+      if (stack.isEmpty()) {
+         valid = false;
+      }
+
       op1 = stack.Pop();
 
       switch (ch) {

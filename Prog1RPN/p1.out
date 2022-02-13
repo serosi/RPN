@@ -21,7 +21,7 @@ The Intermediate Results are: 9
 Expression 5:
 3 4 + + 
 Invalid Expression
-The Intermediate Results are: 7 7 
+The Intermediate Results are: 7 
 
 Expression 6:
 + 
@@ -57,7 +57,7 @@ The Intermediate Results are: 11 -7 3 24 0.818182 2 1.63636 3.63636 5.63636 18.3
 Expression 13:
 2 3 4 5 5 6 7 - * + + + - * 
 Invalid Expression
-The Intermediate Results are: -1 -3 2 13 15 -13 -0 
+The Intermediate Results are: -1 -3 2 13 15 -13 
 
 Expression 14:
 2 3 4 7 8 9 - + * - 
@@ -67,7 +67,7 @@ The Intermediate Results are: -1 1 7 -1
 Expression 15:
 2 / 
 Invalid Expression
-The Intermediate Results are: 0 
+The Intermediate Results are: 
 
 Expression 16:
 
