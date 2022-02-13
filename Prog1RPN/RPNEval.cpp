@@ -126,7 +126,7 @@ using namespace std;
       if (valid && !queue.isEmpty()) {
          answer = queue.LastElement(); // if queue IS empty, there was one operand
       }
-      else if (valid) {
+      if (valid) {
          cout << "The value is: " << answer << "\n";
       }
 
