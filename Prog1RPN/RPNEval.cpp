@@ -23,10 +23,7 @@ using namespace std;
 
          if (ch >= '0' && ch <= '9') {
             cin.putback(ch); // put ch back into input stream
-
             RPNEval::ProcessOperand();
-            expr.append(to_string(stack.Top()) + " "); // add inputted numbers to output string
-
          }
          else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
             RPNEval::ProcessOperator(ch, answer, valid);
@@ -68,7 +65,7 @@ using namespace std;
    void RPNEval::ProcessOperand() {
       float float_operand = 0;
       cin >> float_operand;
-
+      cout << float_operand << " ";
       stack.Push(float_operand); 
    }
 
