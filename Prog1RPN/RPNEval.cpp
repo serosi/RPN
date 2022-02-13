@@ -15,8 +15,6 @@ using namespace std;
       bool done = false;
       bool optr = false; // has ProcessOperator been called?
       char ch;
-      string expr = "";
-
 
       while (valid && !done) {
          cin >> ch;
@@ -28,17 +26,14 @@ using namespace std;
          else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
             RPNEval::ProcessOperator(ch, answer, valid);
             optr = true;
-            expr.push_back(ch);
-            expr.append(" ");
+            cout << ch << " ";
          }
          else if (ch == '#')
             done = true; // done, exit while loop
          else {
-            expr.push_back(ch);
-            expr.append(" ");
+            cout << ch << " ";
             valid = false;
          }
-
       }
       cin.ignore(256, '\n');
 
@@ -56,7 +51,7 @@ using namespace std;
             valid = false;
          }
       }
-      cout << expr << endl;
+      cout << endl;
    }
 
    //---------------------------------------------------------------- 
